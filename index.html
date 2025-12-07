@@ -6,6 +6,7 @@
 
 <title>AutoRoy⚡AI – הופך זמן פאסיבי לזמן אפקטיבי</title>
 
+<!-- CSS CORE -->
 <link rel="stylesheet" href="css/style-core.css">
 <link rel="stylesheet" href="css/style-effects.css">
 
@@ -19,44 +20,70 @@
 <button data-mode="cyber">Cyber</button>
 </div>
 
+<!-- OVERSCROLL GLOW -->
+<div class="overscroll-glow"></div>
+
 <!-- HERO SECTION -->
 <section class="hero">
 
-<!-- חלקיקים -->
+<!-- AI DEPTH FIELD -->
+<div class="depth-field"></div>
+
+<!-- STARFIELD UNIVERSE -->
+<canvas id="particles-stars"></canvas>
+
+<!-- נוירונים (רשת AI) -->
+<canvas id="particles-neural"></canvas>
+
+<!-- חלקיקים רגילים -->
 <canvas id="particles-layer-1"></canvas>
+
+<!-- חלקיקים מגנטיים -->
 <canvas id="particles-layer-2"></canvas>
 
-<!-- תוכן -->
+<!-- HERO CONTENT -->
 <div class="hero-content">
 
-<!-- לוגו -->
+<!-- LOGO -->
 <div class="logo">
 <span class="logo-icon">⚡</span>
 <span class="logo-text">AutoRoy AI</span>
 </div>
 
-<!-- כותרת -->
+<!-- TITLE -->
 <h1 class="hero-title">
 <span class="text-typing">אוטורוי⚡AI הופך זמן פאסיבי לזמן אפקטיבי</span>
 </h1>
 
-<!-- כותרת משנה -->
+<!-- SUBTITLE -->
 <p class="hero-subtitle">
 עכשיו הזמן לפתח לעסק שלך מערכת חכמה, מהירה ומעוצבת לשנת 2026 — לא עוד אתר רגיל!
 </p>
 
-<!-- כפתורים -->
+<!-- BUTTONS -->
 <div class="hero-buttons">
 <a href="https://wa.me/972547222023" class="btn primary">דברו איתי בוואטסאפ</a>
 <a href="https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7" class="btn secondary">דמו חי – נסו את הסוכן</a>
 </div>
 
 </div>
+
 </section>
 
+<!-- SCRIPTS -->
 <script src="js/theme.js"></script>
 <script src="js/interactions.js"></script>
+
+<!-- PARTICLES ENGINES -->
 <script src="js/particles.js"></script>
+<script src="js/particles-layer-2.js"></script>
+<script src="js/particles-stars.js"></script>
+<script src="js/particles-neural.js"></script>
+
+<!-- 3D HERO + BLUR + OVERSCROLL -->
+<script src="js/hero-tilt.js"></script>
+<script src="js/motion-blur.js"></script>
+<script src="js/overscroll.js"></script>
 
 </body>
 </html>
