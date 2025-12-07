@@ -260,3 +260,52 @@ line-height: 1.6;
 .hero-title { font-size: 40px; }
 .hero-subtitle { font-size: 18px; }
 }
+.hero-section {
+position: relative;
+height: 100vh; /* גובה מסך מלא */
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center; /* מרכז אנכי */
+overflow: hidden;
+padding-top: 0; /* מבטל דחיפה למטה */
+}
+
+/* התיקון הקריטי ל-header */
+.main-header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 78px;
+z-index: 999999; /* תמיד מעל הכל */
+pointer-events: auto;
+}
+
+body {
+margin: 0;
+padding: 0;
+}
+
+/* כדי שהתוכן לא "יברח" כלפי מעלה */
+.hero-content {
+position: relative;
+z-index: 20;
+margin-top: 40px; /* מאפשר נשימה מתחת ל-header */
+}
+
+/* כדי שהקנבס לא יכסה את הטקסט */
+canvas {
+z-index: 3;
+}
+
+.depth-field {
+z-index: 1;
+}
+
+/* title ו-subtitle יקבלו צבע / הצללה נכונה */
+.hero-title,
+.hero-subtitle,
+.hero-bullets {
+color: #ffffff;
+}
