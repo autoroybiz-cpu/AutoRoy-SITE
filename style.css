@@ -170,3 +170,154 @@ background: rgba(180,200,255,0.2);
 from {opacity: 0; transform: translateY(20px);}
 to {opacity: 1; transform: translateY(0);}
 }
+/* ============================================================
+AUTO-ROY⚡AI – EFFECT LAYER EXPANSION
+חלק 2 – הוספת שכבות עומק, גלואו, דינמיקה ופרקטלים
+============================================================ */
+
+/* ------------------------------
+שכבת "נשימה" גלובלית
+-------------------------------- */
+body {
+animation: bodyBreathing 18s ease-in-out infinite;
+}
+
+@keyframes bodyBreathing {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+/* ------------------------------
+Glow משתנה
+-------------------------------- */
+.hero-title {
+animation: breathingGlow2 8s ease-in-out infinite;
+}
+
+@keyframes breathingGlow2 {
+0% { text-shadow: 0 0 4px rgba(120,160,255,0.2); }
+25% { text-shadow: 0 0 10px rgba(120,160,255,0.35); }
+50% { text-shadow: 0 0 18px rgba(120,160,255,0.5); }
+75% { text-shadow: 0 0 10px rgba(120,160,255,0.35); }
+100% { text-shadow: 0 0 4px rgba(120,160,255,0.2); }
+}
+
+/* ------------------------------
+שכבות עומק נוספות לניעור מרחבי
+-------------------------------- */
+.depth-layer-1,
+.depth-layer-2,
+.depth-layer-3 {
+position: absolute;
+width: 100%;
+height: 100%;
+pointer-events: none;
+top: 0;
+left: 0;
+opacity: 0.45;
+}
+
+.depth-layer-1 {
+background: radial-gradient(circle at 30% 30%, rgba(100,150,255,0.18), transparent);
+}
+
+.depth-layer-2 {
+background: radial-gradient(circle at 70% 60%, rgba(150,170,255,0.25), transparent);
+}
+
+.depth-layer-3 {
+background: radial-gradient(circle at 50% 80%, rgba(200,200,255,0.12), transparent);
+}
+
+/* פרלקסה */
+.depth-layer-1 { transform: translateZ(-2px) scale(1.1); }
+.depth-layer-2 { transform: translateZ(-4px) scale(1.2); }
+.depth-layer-3 { transform: translateZ(-6px) scale(1.25); }
+
+/* ------------------------------
+אפקט Ripple לכפתורים
+-------------------------------- */
+.btn {
+position: relative;
+overflow: hidden;
+}
+
+.btn::before {
+content: "";
+position: absolute;
+width: 0;
+height: 0;
+border-radius: 50%;
+background: rgba(255,255,255,0.45);
+transform: translate(-50%, -50%);
+pointer-events: none;
+opacity: 0;
+}
+
+.btn:active::before {
+animation: rippleEffect 0.6s ease-out;
+}
+
+@keyframes rippleEffect {
+0% {
+width: 0; height: 0; opacity: 0.7;
+}
+100% {
+width: 280px; height: 280px; opacity: 0;
+}
+}
+
+/* ------------------------------
+Glow Pulse למצב Cyber
+-------------------------------- */
+body.cyber .hero-title {
+animation: cyberPulse 3s ease-in-out infinite;
+}
+
+@keyframes cyberPulse {
+0% { filter: drop-shadow(0 0 4px #55aaff); }
+50% { filter: drop-shadow(0 0 18px #55ccff); }
+100% { filter: drop-shadow(0 0 4px #55aaff); }
+}
+
+/* ------------------------------
+אפקט Smooth Depth ל־subtitle
+-------------------------------- */
+.hero-subtitle {
+animation: subtitleFloat 7s ease-in-out infinite;
+}
+
+@keyframes subtitleFloat {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-6px); }
+100% { transform: translateY(0px); }
+}
+
+/* ------------------------------
+קווי אור דינמיים
+-------------------------------- */
+.light-streak {
+position: absolute;
+width: 180px;
+height: 4px;
+background: linear-gradient(90deg, transparent, white, transparent);
+top: 30%;
+left: -200px;
+opacity: 0.4;
+animation: streakMove 6s linear infinite;
+}
+
+@keyframes streakMove {
+0% { left: -200px; }
+100% { left: 120%; }
+}
+
+/* ------------------------------
+אפקט מעבר על אלמנטי טקסט
+-------------------------------- */
+.hover-glow:hover {
+text-shadow: 0 0 14px var(--glow);
+transform: translateY(-2px);
+transition: 0.4s ease;
+}
