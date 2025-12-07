@@ -1,8 +1,14 @@
-document.querySelectorAll(".theme-toggle button").forEach(btn => {
+/* ============================================================
+AutoRoy⚡AI – THEME CONTROLLER
+מצב תאורה: Light / Dark / Cyber with transitions
+============================================================ */
+
+const themeButtons = document.querySelectorAll(".theme-toggle button");
+
+themeButtons.forEach(btn => {
 btn.addEventListener("click", () => {
-document.body.classList.remove("dark","cyber");
-if (btn.dataset.mode !== "light") {
-document.body.classList.add(btn.dataset.mode);
-}
+const mode = btn.getAttribute("data-mode");
+document.body.className = mode;
+localStorage.setItem("autoroy-theme", mode);
 });
 });
