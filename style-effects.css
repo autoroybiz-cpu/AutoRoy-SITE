@@ -1,376 +1,240 @@
 /* ============================================================
-AutoRoy⚡AI – EFFECTS LAYER
-אנימציות, תנועה, עומק, זוהר, גלילה, ריחוף
-שכבה זו בנויה להיות מורחבת ל־1,200+ שורות בהמשך
+AutoRoy⚡AI – EFFECTS & ADVANCED VISUAL ENGINE
+שכבת אפקטים ברמה של OpenAI / Apple VisionOS
 ============================================================ */
 
-/* ------------------------------
-אפקט הילה סביב לוגו וטקסט
--------------------------------- */
-.logo-text, .logo-icon {
-position: relative;
-}
+/* ------------------------------------------------------------
+1. קנבסים – שכבות אנימציה בגודל מלא
+------------------------------------------------------------ */
 
-.logo-text::after, .logo-icon::after {
-content: "";
+canvas {
 position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-border-radius: 20px;
-filter: blur(20px);
-z-index: -1;
-opacity: 0.55;
-transition: 0.6s ease;
-background: radial-gradient(
-circle,
-rgba(85,150,255,0.7),
-rgba(0,0,0,0)
-);
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
 }
 
-body.dark .logo-text::after,
-body.dark .logo-icon::after {
-background: radial-gradient(
-circle,
-rgba(100,150,255,0.35),
-rgba(0,0,0,0)
-);
+#particles-stars {
+z-index: 1;
 }
 
-body.cyber .logo-text::after,
-body.cyber .logo-icon::after {
-background: radial-gradient(
-circle,
-rgba(80,180,255,0.9),
-rgba(0,0,0,0)
-);
-}
-
-/* מעבר עדין בהירו */
-.hero-content {
-animation: heroEntrance 1.8s ease forwards;
-opacity: 0;
-}
-
-@keyframes heroEntrance {
-0% { opacity: 0; transform: translateY(30px) scale(0.98); }
-60% { opacity: 0.7; transform: translateY(10px) scale(1.02); }
-100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* ------------------------------
-אפקט דופק (Breathing)
--------------------------------- */
-.hero-title {
-animation: breathingGlow 6s ease-in-out infinite;
-}
-
-@keyframes breathingGlow {
-0% {
-text-shadow: 0 0 6px rgba(100,140,255,0.2);
-}
-50% {
-text-shadow: 0 0 14px rgba(100,140,255,0.45);
-}
-100% {
-text-shadow: 0 0 6px rgba(100,140,255,0.2);
-}
-}
-
-/* ------------------------------
-כפתורים – אפקט ריחוף
--------------------------------- */
-.btn {
-position: relative;
-overflow: hidden;
-}
-
-.btn::after {
-content: "";
-position: absolute;
-top: 0; left: -120%;
-width: 120%; height: 100%;
-background: linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,0.35),
-transparent
-);
-transform: skewX(-20deg);
-transition: 0.4s;
-}
-
-.btn:hover::after {
-left: 120%;
-}
-
-/* ------------------------------
-אנימציית Reveal לפי גלילה
--------------------------------- */
-.reveal {
-opacity: 0;
-transform: translateY(40px);
-transition: 0.9s ease;
-}
-
-.reveal.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-/* ------------------------------
-שכבות עומק ל־Hero
--------------------------------- */
-.hero::before,
-.hero::after {
-content: "";
-position: absolute;
-width: 60%;
-height: 60%;
-filter: blur(120px);
+#particles-neural {
 z-index: 2;
-opacity: 0.35;
-transition: 0.8s ease;
 }
 
-.hero::before {
-top: -10%;
-left: 10%;
-background: var(--primary);
+#particles-layer-1 {
+z-index: 3;
 }
 
-.hero::after {
-bottom: -10%;
-right: 10%;
-background: #aaccff;
+#particles-layer-2 {
+z-index: 4;
 }
 
-body.dark .hero::after {
-background: #3b6cff;
+/* ------------------------------------------------------------
+2. DEEP FIELD – שכבת עומק קוסמית
+------------------------------------------------------------ */
+
+.depth-field {
+position: absolute;
+width: 180%;
+height: 180%;
+top: -40%;
+left: -40%;
+background: radial-gradient(circle at center,
+rgba(140,160,255,0.45),
+rgba(90,110,220,0.25),
+rgba(30,40,100,0.15),
+transparent 80%);
+filter: blur(140px);
+z-index: 0;
+pointer-events: none;
+opacity: 0.55;
+animation: depthPulse 22s infinite ease-in-out;
 }
 
-body.cyber .hero::after {
-background: #55aaff;
+@keyframes depthPulse {
+0% { transform: scale(1) rotate(0deg); opacity: 0.45; }
+50% { transform: scale(1.15) rotate(4deg); opacity: 0.75; }
+100% { transform: scale(1) rotate(0deg); opacity: 0.45; }
 }
 
-/* ------------------------------
-ריחוף עדין על אלמנטים
--------------------------------- */
-.logo:hover,
-.hero-title:hover,
-.hero-subtitle:hover {
-transform: translateY(-4px);
-transition: 0.4s ease;
-}
+/* ------------------------------------------------------------
+3. HERO FOCUS GLOW – אפקט זוהר מסביב לתוכן
+------------------------------------------------------------ */
 
-/* ------------------------------
-אנימציה לטקסט כתיבה
--------------------------------- */
-.text-typing {
-display: inline-block;
-overflow: hidden;
-white-space: nowrap;
-border-right: 3px solid var(--primary);
-animation: typing 3.8s steps(32) forwards,
-blink 0.7s step-end infinite;
-}
-
-@keyframes typing {
-from { width: 0 }
-to { width: 100% }
-}
-
-@keyframes blink {
-0% { border-color: transparent; }
-50% { border-color: var(--primary); }
-100% { border-color: transparent; }
-}
-
-/* ------------------------------
-אפקט עומק בעת תנועה עם העכבר
--------------------------------- */
-.mouse-depth {
-transition: transform 0.3s ease;
-}
-
-.mouse-depth.active {
-transform: translate3d(var(--dx), var(--dy), 0);
-}
-/* ============================================================
-AUTO-ROY⚡AI – ADVANCED VISUAL ENGINE (PART 1)
-AI BREATHING GRADIENT + APPLE-LIKE DEPTH
-============================================================ */
-
-/* ------------------------------
-AI Breathing Background Gradient
--------------------------------- */
-body {
-background: linear-gradient(
-135deg,
-#f3f8ff 0%,
-#e8f0ff 20%,
-#d9e8ff 40%,
-#e3e9ff 60%,
-#f7fbff 80%,
-#ffffff 100%
-);
-background-size: 400% 400%;
-animation: aiBreath 22s ease-in-out infinite;
-}
-
-@keyframes aiBreath {
-0% { background-position: 0% 20%; }
-25% { background-position: 50% 40%; }
-50% { background-position: 100% 60%; }
-75% { background-position: 50% 80%; }
-100% { background-position: 0% 20%; }
-}
-
-/* ------------------------------
-Apple VisionOS Floating Layers
--------------------------------- */
 .hero-content {
 position: relative;
-z-index: 10;
-padding: 40px 60px;
-border-radius: 40px;
-background: rgba(255,255,255,0.32);
-backdrop-filter: blur(40px) saturate(180%);
-border: 1px solid rgba(255,255,255,0.45);
-box-shadow:
-0 0 50px rgba(180,200,255,0.4),
-0 20px 60px rgba(70,80,120,0.15),
-inset 0 0 30px rgba(255,255,255,0.4);
-transform-style: preserve-3d;
-animation: heroFloatSoft 12s ease-in-out infinite alternate;
 }
 
-@keyframes heroFloatSoft {
-0% { transform: translateY(0px) translateZ(0px); }
-50% { transform: translateY(-18px) translateZ(18px); }
-100% { transform: translateY(0px) translateZ(0px); }
-}
-
-/* ------------------------------
-Hero Glow Halo
--------------------------------- */
 .hero-content::before {
 content: "";
 position: absolute;
-top: -20%;
-left: 0;
-width: 100%;
-height: 140%;
-background: radial-gradient(
-circle,
-rgba(100,150,255,0.35),
-transparent 70%
-);
-filter: blur(100px);
+width: 120%;
+height: 120%;
+top: -10%;
+left: -10%;
+background: radial-gradient(circle at center,
+rgba(255,255,255,0.22),
+transparent 70%);
+filter: blur(80px);
+opacity: 0.7;
 z-index: -1;
-opacity: 0.55;
-animation: glowPulse 10s ease-in-out infinite;
 }
 
-@keyframes glowPulse {
-0% { opacity: 0.35; transform: scale(1); }
-50% { opacity: 0.65; transform: scale(1.15); }
-100% { opacity: 0.35; transform: scale(1); }
-}
-
-/* ------------------------------
-Depth Shadow Grid (AI Structure)
--------------------------------- */
-.hero {
-position: relative;
-}
-
-.hero::after {
-content: "";
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 180px;
-background: linear-gradient(
-to bottom,
-transparent,
-rgba(0,0,0,0.05)
-);
-filter: blur(40px);
-opacity: 0.4;
-}
-
-/* ------------------------------
-Text Soft Highlight
--------------------------------- */
-.hero-title {
-text-shadow:
-0 0 20px rgba(160,180,255,0.4),
-0 0 40px rgba(140,160,240,0.25);
-}
-/* ============================================================
-SOFT MOTION BLUR (Responsive to Cursor Speed)
-============================================================ */
-
-:root {
---blur-strength: 0px;
-}
-
-body.motion-blur-active .hero-content,
-body.motion-blur-active .logo,
-body.motion-blur-active .hero-title {
-filter: blur(var(--blur-strength));
-transition: filter 0.1s ease-out;
-}
-/* ============================================================
-OVERSCROLL GLOW – iOS style
-============================================================ */
+/* ------------------------------------------------------------
+4. OVERSCROLL GLOW – זוהר אלסטי כמו ב-iOS
+------------------------------------------------------------ */
 
 .overscroll-glow {
 position: fixed;
 top: 0;
 left: 0;
-height: 120px;
 width: 100%;
-pointer-events: none;
-background: radial-gradient(
-ellipse at top,
-rgba(130,160,255,0.45),
-transparent 70%
-);
+height: 120px;
+background: radial-gradient(at top,
+rgba(150,170,255,0.55),
+rgba(120,140,255,0.15),
+transparent 80%);
+filter: blur(90px);
 opacity: 0;
-filter: blur(60px);
-transition: opacity 0.25s ease-out;
-z-index: 999;
+transition: 0.35s ease-out;
+z-index: 9999;
+pointer-events: none;
 }
 
 body.overscroll-active .overscroll-glow {
+opacity: 1;
+}
+
+/* ------------------------------------------------------------
+5. HERO FLOATING – תנועת עומק רכה
+------------------------------------------------------------ */
+
+.hero-content {
+transform-style: preserve-3d;
+perspective: 1400px;
+transition: transform 0.35s ease-out;
+}
+
+/* ------------------------------------------------------------
+6. BUTTON EFFECTS – Glow, Hover Lift
+------------------------------------------------------------ */
+
+.btn {
+backdrop-filter: blur(10px);
+}
+
+.btn.primary {
+background: linear-gradient(135deg, var(--primary), #6ea3ff);
+}
+
+.btn.primary:hover {
+box-shadow: 0 25px 50px rgba(75,139,255,0.65);
+}
+
+.btn.secondary:hover {
+box-shadow: 0 10px 25px rgba(255,255,255,0.35);
+}
+
+/* ------------------------------------------------------------
+7. SERVICE CARDS – זכוכית חכמה + תאורה פנימית
+------------------------------------------------------------ */
+
+.service-card {
+position: relative;
+overflow: hidden;
+}
+
+/* אור פנימי זז */
+.service-card::before {
+content: "";
+position: absolute;
+width: 180%;
+height: 180%;
+top: -40%;
+left: -40%;
+background: radial-gradient(circle,
+rgba(255,255,255,0.35),
+rgba(150,170,255,0.25),
+transparent 70%);
+opacity: 0;
+transform: scale(0.8);
+transition: 0.5s ease-out;
+}
+
+.service-card:hover::before {
+opacity: 0.6;
+transform: scale(1.1);
+}
+
+/* קו זוהר עליון */
+.service-card::after {
+content: "";
+position: absolute;
+top: 0;
+left: 50%;
+width: 60%;
+height: 3px;
+background: linear-gradient(90deg,
+transparent,
+rgba(255,255,255,0.8),
+transparent);
+transform: translateX(-50%);
+opacity: 0;
+transition: 0.4s ease-out;
+}
+
+.service-card:hover::after {
 opacity: 0.9;
 }
-/* ============================================================
-AI DEPTH FIELDS – פרספקטיבה דינמית
-============================================================ */
 
-.depth-field {
-position: absolute;
-width: 160%;
-height: 160%;
-top: -20%;
-left: -20%;
-background: radial-gradient(
-circle,
-rgba(150,170,255,0.15),
-transparent 70%
-);
-filter: blur(160px);
-opacity: 0.35;
-pointer-events: none;
-transform: translateZ(-100px);
-animation: depthPulse 20s infinite ease-in-out;
+/* ------------------------------------------------------------
+8. HERO BULLETS – אפקט מופע
+------------------------------------------------------------ */
+
+.hero-bullets li {
+position: relative;
+padding-right: 12px;
 }
 
-@keyframes depthPulse {
-0% { opacity: 0.3; transform: scale(1); }
-50% { opacity: 0.55; transform: scale(1.2); }
-100% { opacity: 0.3; transform: scale(1); }
+.hero-bullets li::before {
+content: "";
+position: absolute;
+right: -4px;
+top: 12px;
+width: 6px;
+height: 6px;
+background: var(--primary);
+border-radius: 50%;
+box-shadow: 0 0 12px rgba(75,139,255,0.75);
+}
+
+/* ------------------------------------------------------------
+9. SHADOWS & LIGHT – אפקטי אור רכים
+------------------------------------------------------------ */
+
+.hero-title {
+text-shadow:
+0 0 25px rgba(140,160,255,0.45),
+0 0 50px rgba(140,160,255,0.25);
+}
+
+.hero-subtitle {
+text-shadow:
+0 0 15px rgba(120,140,255,0.35);
+}
+
+/* ------------------------------------------------------------
+10. MOBILE IMPROVEMENTS
+------------------------------------------------------------ */
+
+@media (max-width: 700px) {
+.hero-title {
+text-shadow: none;
+}
+.service-card {
+border-radius: 25px;
+}
 }
