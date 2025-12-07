@@ -308,3 +308,42 @@ text-shadow:
 0 0 20px rgba(160,180,255,0.4),
 0 0 40px rgba(140,160,240,0.25);
 }
+/* ============================================================
+SOFT MOTION BLUR (Responsive to Cursor Speed)
+============================================================ */
+
+:root {
+--blur-strength: 0px;
+}
+
+body.motion-blur-active .hero-content,
+body.motion-blur-active .logo,
+body.motion-blur-active .hero-title {
+filter: blur(var(--blur-strength));
+transition: filter 0.1s ease-out;
+}
+/* ============================================================
+OVERSCROLL GLOW – iOS style
+============================================================ */
+
+.overscroll-glow {
+position: fixed;
+top: 0;
+left: 0;
+height: 120px;
+width: 100%;
+pointer-events: none;
+background: radial-gradient(
+ellipse at top,
+rgba(130,160,255,0.45),
+transparent 70%
+);
+opacity: 0;
+filter: blur(60px);
+transition: opacity 0.25s ease-out;
+z-index: 999;
+}
+
+body.overscroll-active .overscroll-glow {
+opacity: 0.9;
+}
