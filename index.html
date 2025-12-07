@@ -6,84 +6,113 @@
 
 <title>AutoRoy⚡AI – הופך זמן פאסיבי לזמן אפקטיבי</title>
 
-<!-- CSS CORE -->
 <link rel="stylesheet" href="css/style-core.css">
 <link rel="stylesheet" href="css/style-effects.css">
 
 </head>
 <body>
 
-<!-- מצב תאורה -->
-<div class="theme-toggle">
-<button data-mode="light">Light</button>
-<button data-mode="dark">Dark</button>
-<button data-mode="cyber">Cyber</button>
+<!-- HEADER -->
+<header class="main-header">
+<div class="header-logo">
+⚡ AutoRoy AI
 </div>
+
+<nav class="header-nav">
+<a href="#hero">בית</a>
+<a href="#services">שירותים</a>
+<a href="#portfolio">תיק עבודות</a>
+<a href="#pricing">מחירים</a>
+<a href="#demo">דמו חי</a>
+<a href="#contact" class="nav-cta">צור קשר</a>
+</nav>
+</header>
 
 <!-- OVERSCROLL GLOW -->
 <div class="overscroll-glow"></div>
 
-<!-- HERO SECTION -->
-<section class="hero">
+<!-- HERO -->
+<section id="hero" class="hero-section">
 
-<!-- AI DEPTH FIELD -->
+<!-- שכבות אנימציה -->
+<canvas id="particles-stars"></canvas>
+<canvas id="particles-neural"></canvas>
+<canvas id="particles-layer-1"></canvas>
+<canvas id="particles-layer-2"></canvas>
 <div class="depth-field"></div>
 
-<!-- STARFIELD UNIVERSE -->
-<canvas id="particles-stars"></canvas>
-
-<!-- נוירונים (רשת AI) -->
-<canvas id="particles-neural"></canvas>
-
-<!-- חלקיקים רגילים -->
-<canvas id="particles-layer-1"></canvas>
-
-<!-- חלקיקים מגנטיים -->
-<canvas id="particles-layer-2"></canvas>
-
-<!-- HERO CONTENT -->
+<!-- תוכן ה־Hero -->
 <div class="hero-content">
 
-<!-- LOGO -->
 <div class="logo">
 <span class="logo-icon">⚡</span>
 <span class="logo-text">AutoRoy AI</span>
 </div>
 
-<!-- TITLE -->
 <h1 class="hero-title">
-<span class="text-typing">אוטורוי⚡AI הופך זמן פאסיבי לזמן אפקטיבי</span>
+מערכות אוטומציה ו־AI<br>
+שמשדרגות את העסק שלך ביום אחד
 </h1>
 
-<!-- SUBTITLE -->
 <p class="hero-subtitle">
-עכשיו הזמן לפתח לעסק שלך מערכת חכמה, מהירה ומעוצבת לשנת 2026 — לא עוד אתר רגיל!
+אתרים מתקדמים, סוכני AI מותאמים אישית ואוטומציות חכמות<br>
+שמביאות יותר לקוחות — בזמן שאתה ישן.
 </p>
 
-<!-- BUTTONS -->
+<ul class="hero-bullets">
+<li>⚡ תהליכים אוטומטיים שחוסכים שעות ביום</li>
+<li>🤖 סוכני AI שמדברים עם הלקוחות שלך 24/7</li>
+<li>🚀 זמן הקמה קצר — תוך ימים ולא שבועות</li>
+</ul>
+
 <div class="hero-buttons">
 <a href="https://wa.me/972547222023" class="btn primary">דברו איתי בוואטסאפ</a>
-<a href="https://hook.eu1.make.com/wdcaoe8jb463hbqv1mit2wp1mn2xqqt7" class="btn secondary">דמו חי – נסו את הסוכן</a>
+<a href="#demo" class="btn secondary">דמו חי – נסו את הסוכן</a>
 </div>
 
 </div>
+</section>
 
+<!-- SERVICES -->
+<section id="services" class="services-section">
+
+<h2 class="section-title">מה אני בונה עבורך?</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3>🤖 סוכני AI מותאמים אישית</h3>
+<p>בוטים חכמים שמחוברים לאתר שלך, מבינים את העסק שלך ויודעים לענות ללקוחות 24/7.</p>
+</div>
+
+<div class="service-card">
+<h3>⚡ דפי נחיתה שממירים פי 3</h3>
+<p>דפי נחיתה מעוצבים, עם אנימציות, טפסים חכמים ותשתית שמביאה הרבה יותר פניות.</p>
+</div>
+
+<div class="service-card">
+<h3>🔗 אוטומציות מלאות לעסק</h3>
+<p>Zapier, Make, WhatsApp API & Google Sheets — הכל מתחבר למערכת אחת חכמה.</p>
+</div>
+
+<div class="service-card">
+<h3>🧩 אינטגרציות מקצועיות</h3>
+<p>Shopify, WordPress, Wix, Render, CRM — אני מחבר את כל התשתיות לעסק אוטומטי.</p>
+</div>
+
+</div>
 </section>
 
 <!-- SCRIPTS -->
 <script src="js/theme.js"></script>
-<script src="js/interactions.js"></script>
+<script src="js/hero-tilt.js"></script>
+<script src="js/motion-blur.js"></script>
+<script src="js/overscroll.js"></script>
 
-<!-- PARTICLES ENGINES -->
 <script src="js/particles.js"></script>
 <script src="js/particles-layer-2.js"></script>
 <script src="js/particles-stars.js"></script>
 <script src="js/particles-neural.js"></script>
-
-<!-- 3D HERO + BLUR + OVERSCROLL -->
-<script src="js/hero-tilt.js"></script>
-<script src="js/motion-blur.js"></script>
-<script src="js/overscroll.js"></script>
 
 </body>
 </html>
